@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Natural BD Extra - ন্যাচারাল বিডি এক্সট্রা</title>
     <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -16,115 +15,133 @@
         <span><i class="fa-brands fa-whatsapp"></i> WhatsApp: 01910-532834</span>
     </div>
 
-    <!-- মেইন হেডার -->
+    <!-- হেডার -->
     <header class="site-header">
         <div class="header-left">
-            <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
             <div class="logo">
                 <h2>Natural BD Extra</h2>
+                <p>প্রকৃতির ছোঁয়া ও সুস্বাস্থ্য</p>
             </div>
         </div>
         <div class="header-right">
-            <a href="admin.html" class="icon-btn" title="অ্যাডমিন প্যানেল"><i class="fa-solid fa-lock"></i></a>
-            <a href="#" class="icon-btn"><i class="fa-solid fa-search"></i></a>
-            <a href="#" class="icon-btn"><i class="fa-solid fa-heart"></i></a>
-            <a href="#" class="icon-btn cart-icon" onclick="openCart()">
+            <a href="#" class="cart-icon" onclick="openCartDetails()">
                 <i class="fa-solid fa-shopping-cart"></i>
                 <span class="cart-count" id="cartCount">0</span>
             </a>
         </div>
     </header>
 
-    <!-- সাইডবার মেনু (ক্যাটাগরি ও নেভিগেশন) -->
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h3>মেনু ও ক্যাটাগরি</h3>
-            <button onclick="toggleSidebar()"><i class="fa-solid fa-xmark"></i></button>
+    <!-- স্পেশাল কম্বো প্যাকেজ ব্যানার ও বিবরণ -->
+    <section class="combo-section">
+        <div class="combo-banner">
+            <span class="badge-combo">PREMIUM COMBO PACKAGE</span>
+            <h1>বিশেষ কম্বো প্যাকেজ: শক্তি, সহনশীলতা ও পারফরম্যান্সের সম্পূর্ণ সমাধান</h1>
+            <p>প্রাকৃতিক উপায়ে পুরুষের আত্মবিশ্বাস ফিরে পান, আবার হোন আগের মতো শক্তিশালী!</p>
         </div>
-        <ul class="sidebar-menu">
-            <li><a href="index.html"><i class="fa-solid fa-house"></i> হোম পেজ</a></li>
-            <li><a href="#products"><i class="fa-solid fa-box"></i> সকল পণ্য</a></li>
-            <li><a href="#"><i class="fa-solid fa-spa"></i> ভেষজ ও অর্গানিক পণ্য</a></li>
-            <li><a href="#"><i class="fa-solid fa-pills"></i> আয়ুর্বেদিক ও হোমিওপ্যাথি</a></li>
-            <li><a href="#"><i class="fa-solid fa-gift"></i> কম্বো প্যাকেজ অফার</a></li>
-            <li><a href="admin.html"><i class="fa-solid fa-user-shield"></i> সিক্রেট অ্যাডমিন প্যানেল</a></li>
-        </ul>
+
+        <div class="combo-details-box">
+            <h2>প্যাকেজে যা যা থাকছে:</h2>
+            <ul class="combo-items-list">
+                <li>🍯 <strong>রাজমনি হালুয়া:</strong> শক্তি ও স্ট্যামিনা বাড়ায়।</li>
+                <li>💊 <strong>৬০ টি বীর্য গাড়ো করার বড়ি (Sperm Power Booster):</strong> বীর্যের ঘনত্ব ও পরিমাণ বাড়ায়।</li>
+                <li>💊 <strong>৩০ টি এনার্জি সাপোর্টের বড়ি:</strong> শরীরের শক্তি ও কর্মক্ষমতা বাড়ায়।</li>
+                <li>🧴 <strong>২ টি মালিস তেল (Malish Oil):</strong> রক্ত সঞ্চালন বাড়ায় ও শক্তি জাগায়।</li>
+            </ul>
+
+            <!-- কম্বো প্যাকেজের নিয়মাবলি ও গাইডলাইন -->
+            <div class="guideline-container">
+                <h3>📋 ব্যবহারবিধি ও গুরুত্বপূর্ণ নির্দেশনা</h3>
+                
+                <div class="guide-block">
+                    <h4>১️⃣ হালুয়া খাওয়ার নিয়ম</h4>
+                    <p>• দুটি হালুয়া একসাথে খাবেন না।<br>• প্রথম হালুয়া সম্পূর্ণ শেষ হওয়ার পর দ্বিতীয় হালুয়া খাওয়া শুরু করবেন।<br>• প্রতিদিন নিয়মিত একই সময়ে সেবন করার চেষ্টা করুন।</p>
+                </div>
+
+                <div class="guide-block">
+                    <h4>২️⃣ মালিশের তেল ব্যবহারের নিয়ম</h4>
+                    <p>• যেদিন ব্যবহার শুরু করবেন, একটানা ৭ দিন ব্যবহার করুন।<br>• এই ৭ দিনের মধ্যে স্ত্রীর সাথে সহবাস করবেন না।<br>• যদি সহবাস করেন, তাহলে তেল ব্যবহার আপাতত বন্ধ রাখুন এবং পরে আবার ৭ দিনের কোর্স সম্পন্ন করুন।</p>
+                </div>
+
+                <div class="guide-block">
+                    <h4>৩️⃣ ওয়ান-টাইম বড়ি</h4>
+                    <p>• পলিথিনের ভিতরে থাকা বড়িটি শুধুমাত্র প্রয়োজনের সময় খাবেন।<br>• স্ত্রীর কাছে যাওয়ার ১ ঘণ্টা আগে বড়িটি চিবিয়ে পর্যাপ্ত পানি দিয়ে সেবন করুন।<br>• ২৪ ঘণ্টায় ১টির বেশি খাবেন না।</p>
+                </div>
+
+                <div class="guide-block">
+                    <h4>৪️⃣ ৬০টি বড়ির নিয়ম</h4>
+                    <p>• প্রতিদিন সকালে ১টি এবং বিকেলে ১টি করে খাবেন।<br>• প্রতিদিন একই সময়ে খাওয়ার চেষ্টা করুন।</p>
+                </div>
+
+                <div class="guide-block">
+                    <h4>🥗 প্রতিদিনের খাদ্যতালিকা</h4>
+                    <p>নিয়মিত খাবারের সঙ্গে চেষ্টা করুন— দুধ, ডিম, মাছ, মুরগি বা গরুর মাংস (পরিমিত), বাদাম (কাঠবাদাম, কাজুবাদাম, চিনাবাদাম), খেজুর, কলা, আপেল ও মৌসুমি ফল, সবুজ শাকসবজি, ডাল, গাজর, শসা এবং পর্যাপ্ত বিশুদ্ধ পানি পান করুন।</p>
+                </div>
+
+                <div class="guide-block">
+                    <h4>🍯 অতিরিক্ত পুষ্টিকর অভ্যাস</h4>
+                    <p>• প্রতিদিন সকালে ১–২ চা চামচ খাঁটি মধু খেতে পারেন।<br>• প্রতিদিন ১ চা চামচ কালোজিরা অথবা কালোজিরা গুঁড়ো মধুর সঙ্গে মিশিয়ে খেতে পারেন।<br>• পর্যাপ্ত ঘুম ও নিয়মিত হালকা ব্যায়াম করুন।</p>
+                </div>
+
+                <div class="guide-block alert-block">
+                    <h4>⚠️ সতর্কবার্তা ও পরামর্শ</h4>
+                    <p>• নির্দেশিত মাত্রার বেশি সেবন করবেন না। ধূমপান ও মাদক এড়িয়ে চলুন। অতিরিক্ত তেল-চর্বিযুক্ত ও জাঙ্ক ফুড কম খান। শিশুদের নাগালের বাইরে রাখুন। ঠান্ডা ও শুকনো স্থানে সংরক্ষণ করুন।<br>• সম্পূর্ণ কোর্স শেষ করুন। স্বাস্থ্যকর খাদ্যাভ্যাস বজায় রাখুন। আপনার সুস্বাস্থ্য ও সুন্দর দাম্পত্য জীবন কামনা করছি। 🌿💚</p>
+                </div>
+            </div>
+
+            <div class="price-box">
+                প্যাকেজের মূল্য: <span class="old-price">৳ ৬,০০০</span> <span class="new-price">অফার মূল্য: ৳ ৩,৫০০</span>
+            </div>
+            
+            <button class="order-whatsapp-btn" onclick="orderComboWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে কম্বো প্যাকেজ অর্ডার করুন
+            </button>
+        </div>
+    </section>
+
+    <!-- সাধারণ পণ্য ও গ্যালারি সেকশন -->
+    <section id="products" class="product-section">
+        <h2 class="section-title">আমাদের অন্যান্য ভেষজ পণ্যসমূহ</h2>
+        <div class="product-grid" id="dynamicProductGrid">
+            <!-- ইউজার আপলোড করা ছবি ও পণ্য এখানে দেখাবে -->
+        </div>
+    </section>
+
+    <!-- ফুটার (ফুটারের লেখার ওপর টানা ২৫ বার ক্লিক করলে সিক্রেট এডমিন প্যানেল খুলবে) -->
+    <footer class="main-footer" style="background:#142818; color:#fff; padding:30px 15px; text-align:center; margin-top:30px;">
+        <div class="footer-content">
+            <h3>Natural BD Extra</h3>
+            <p>নিরাপদ ও সহজ ই-কমার্স সেবা। ১০০% পার্শ্বপ্রতিক্রিয়ামুক্ত ভেষজ পণ্য।</p>
+            <p>📞 01910-532834 (WhatsApp)</p>
+        </div>
+        <div class="footer-bottom" id="secretTrigger" onclick="triggerAdminModal()" style="margin-top:15px; font-size:12px; color:#aaa; cursor:pointer;">
+            <p>&copy; ২০২৬ Natural BD Extra. সর্বস্বত্ব সংরক্ষিত। (সিক্রেট)</p>
+        </div>
+    </footer>
+
+    <!-- কার্ট বা অর্ডার ডিটেলস মডেল -->
+    <div class="modal-overlay" id="orderModal" style="display: none;">
+        <div class="modal-content">
+            <h3>অর্ডারের বিস্তারিত তথ্য দিন</h3>
+            <p>আপনার নাম, ঠিকানা এবং ফোন নম্বর লিখে অর্ডার কনফার্ম করুন:</p>
+            <textarea id="customerDetails" placeholder="নাম:&#10;ঠিকানা:&#10;মোবাইল নম্বর:"></textarea>
+            <div class="modal-buttons">
+                <button onclick="sendOrderToWhatsApp()" class="whatsapp-send-btn">হোয়াটসঅ্যাপে অর্ডার পাঠান</button>
+                <button onclick="closeModal()" class="close-btn">বন্ধ করুন</button>
+            </div>
+        </div>
     </div>
 
-    <!-- হিরো ব্যানার স্লাইডার সেকশন -->
-    <section class="hero-slider">
-        <div class="slide">
-            <div class="slide-content">
-                <span class="badge-discount">কম্বো অফার!</span>
-                <h2>১০০% খাঁটি ভেষজ ও অর্গানিক পণ্য</h2>
-                <p>সুস্থ থাকুন প্রতিদিন, প্রকৃতির ছোঁয়ায়। সরাসরি হোম ডেলিভারি!</p>
-                <a href="#products" class="btn-primary">সব পণ্য দেখুন <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+    <!-- সিক্রেট এডমিন পপআপ (২৫ ক্লিকে আসবে) -->
+    <div class="modal-overlay" id="secretAdminModal" style="display: none;">
+        <div class="modal-content">
+            <h3>🔐 সিক্রেট এডমিন প্যানেল</h3>
+            <p>পণ্য আপলোড করুন (ছবির নির্দিষ্ট সাইজ লাগবে না):</p>
+            <input type="text" id="adminProdName" placeholder="পণ্যের নাম">
+            <input type="text" id="adminProdPrice" placeholder="মূল্য (টাকা)">
+            <input type="file" id="adminProdImage" accept="image/*">
+            <button onclick="saveNewProduct()" class="whatsapp-send-btn">পণ্য যুক্ত করুন</button>
+            <button onclick="closeAdminModal()" class="close-btn" style="margin-top:10px;">বন্ধ করুন</button>
         </div>
-    </section>
-
-    <!-- টপ ক্যাটাগরি সেকশন -->
-    <section class="categories-section">
-        <h2 class="section-title">Top Categories</h2>
-        <div class="category-grid">
-            <div class="cat-card">
-                <img src="https://via.placeholder.com/100" alt="Honey">
-                <p>খাঁটি মধু</p>
-            </div>
-            <div class="cat-card">
-                <img src="https://via.placeholder.com/100" alt="Oil">
-                <p>ভেষজ তেল</p>
-            </div>
-            <div class="cat-card">
-                <img src="https://via.placeholder.com/100" alt="Haluwa">
-                <p>স্পেশাল হালুয়া</p>
-            </div>
-            <div class="cat-card">
-                <img src="https://via.placeholder.com/100" alt="Organic">
-                <p>অর্গানিক ফুড</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- টপ প্রোডাক্টস সেকশন -->
-    <section id="products" class="product-section">
-        <h2 class="section-title">Top Products</h2>
-        <div class="product-grid">
-            <!-- প্রোডাক্ট ১ -->
-            <div class="product-card">
-                <span class="sale-badge">Sale!</span>
-                <img src="https://via.placeholder.com/200" alt="Product">
-                <h3>খাঁটি সুন্দরবনের মধু (Natural Honey)</h3>
-                <p class="price">৳ ১,২০০</p>
-                <div class="weight-options">
-                    <button class="wt-btn active">1kg</button>
-                    <button class="wt-btn">500gm</button>
-                    <button class="wt-btn">250gm</button>
-                </div>
-                <button class="order-btn" onclick="addToCart('খাঁটি সুন্দরবনের মধু', 1200)">অর্ডার করুন</button>
-            </div>
-            <!-- প্রোডাক্ট ২ -->
-            <div class="product-card">
-                <span class="sale-badge">Sale!</span>
-                <img src="https://via.placeholder.com/200" alt="Product">
-                <h3>স্পেশাল পাওয়ারফুল অর্গানিক হালুয়া</h3>
-                <p class="price">৳ ১,৫০০</p>
-                <div class="weight-options">
-                    <button class="wt-btn active">1kg</button>
-                    <button class="wt-btn">500gm</button>
-                </div>
-                <button class="order-btn" onclick="addToCart('স্পেশাল পাওয়ারফুল অর্গানিক হালুয়া', 1500)">অর্ডার করুন</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- বটম নেভিগেশন বার (মোবাইল ফ্রেন্ডলি) -->
-    <div class="bottom-nav">
-        <a href="index.html" class="active"><i class="fa-solid fa-house"></i><span>হোম</span></a>
-        <a href="#products"><i class="fa-solid fa-box-open"></i><span>পণ্য</span></a>
-        <a href="admin.html"><i class="fa-solid fa-lock"></i><span>অ্যাডমিন</span></a>
-        <a href="tel:01910532834"><i class="fa-solid fa-phone-volume"></i><span>কল করুন</span></a>
-        <a href="#" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i><span>মেনু</span></a>
     </div>
 
     <script src="script.js"></script>
