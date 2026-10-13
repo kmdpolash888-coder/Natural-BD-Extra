@@ -5,96 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Natural BD Extra - ন্যাচারাল বিডি এক্সট্রা</title>
     <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <!-- টপ হটলাইন বার -->
     <div class="top-bar">
-        🔒 এনক্রিপশন সিকিউরড ও বিশ্বস্ত হটলাইন অর্ডার: <strong>01910-532834 (WhatsApp)</strong> ই-কমার্স প্ল্যাটফর্ম
+        <span><i class="fa-solid fa-phone"></i> হটলাইন: 01910-532834</span>
+        <span><i class="fa-brands fa-whatsapp"></i> WhatsApp: 01910-532834</span>
     </div>
 
-    <!-- হেডার সেকশন -->
-    <header class="main-header">
-        <div class="logo-area">
-            <h1>Natural BD Extra</h1>
-            <p>প্রকৃতির ছোঁয়া, সুস্বাস্থ্য ও আস্থার প্রতীক</p>
+    <!-- মেইন হেডার -->
+    <header class="site-header">
+        <div class="header-left">
+            <button class="menu-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+            <div class="logo">
+                <h2>Natural BD Extra</h2>
+            </div>
         </div>
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="পণ্য খুঁজুন...">
-            <button onclick="searchProduct()">🔍</button>
-        </div>
-        <div class="action-buttons">
-            <a href="admin.html" class="admin-btn">🔒 অ্যাডমিন প্যানেল</a>
-            <button class="cart-btn" onclick="openCart()">🛒 কার্ট (<span id="cartCount">0</span>)</button>
+        <div class="header-right">
+            <a href="admin.html" class="icon-btn" title="অ্যাডমিন প্যানেল"><i class="fa-solid fa-lock"></i></a>
+            <a href="#" class="icon-btn"><i class="fa-solid fa-search"></i></a>
+            <a href="#" class="icon-btn"><i class="fa-solid fa-heart"></i></a>
+            <a href="#" class="icon-btn cart-icon" onclick="openCart()">
+                <i class="fa-solid fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </a>
         </div>
     </header>
 
-    <!-- ন্যাভিগেশন বার -->
-    <nav class="main-nav">
-        <ul>
-            <li><a href="index.html" class="active">হোম</a></li>
-            <li><a href="#products">সকল পণ্য</a></li>
-            <li><a href="#categories">ক্যাটাগরি</a></li>
-            <li><a href="#offers">অফার ও বিজ্ঞাপন</a></li>
-            <li><a href="#about">আমাদের সম্পর্কে</a></li>
+    <!-- সাইডবার মেনু (ক্যাটাগরি ও নেভিগেশন) -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>মেনু ও ক্যাটাগরি</h3>
+            <button onclick="toggleSidebar()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> হোম পেজ</a></li>
+            <li><a href="#products"><i class="fa-solid fa-box"></i> সকল পণ্য</a></li>
+            <li><a href="#"><i class="fa-solid fa-spa"></i> ভেষজ ও অর্গানিক পণ্য</a></li>
+            <li><a href="#"><i class="fa-solid fa-pills"></i> আয়ুর্বেদিক ও হোমিওপ্যাথি</a></li>
+            <li><a href="#"><i class="fa-solid fa-gift"></i> কম্বো প্যাকেজ অফার</a></li>
+            <li><a href="admin.html"><i class="fa-solid fa-user-shield"></i> সিক্রেট অ্যাডমিন প্যানেল</a></li>
         </ul>
-    </nav>
+    </div>
 
-    <!-- স্পন্সরড বিজ্ঞাপন স্লট (পণ্য বিক্রি ছাড়াও প্যাসিভ ইনকামের জন্য) -->
-    <section class="ad-container">
-        <div class="ad-box">
-            <p>📢 স্পন্সরড বিজ্ঞাপন / আপস প্রমোশন (Adsterra / AdSense Slot)</p>
-            <div class="ad-placeholder">
-                এখানে আপনার গুগল অ্যাডসেন্স বা অ্যাডস্টার্নার বিজ্ঞাপন শো করবে, যা থেকে আপনার বাড়তি ইনকাম হবে।
+    <!-- হিরো ব্যানার স্লাইডার সেকশন -->
+    <section class="hero-slider">
+        <div class="slide">
+            <div class="slide-content">
+                <span class="badge-discount">কম্বো অফার!</span>
+                <h2>১০০% খাঁটি ভেষজ ও অর্গানিক পণ্য</h2>
+                <p>সুস্থ থাকুন প্রতিদিন, প্রকৃতির ছোঁয়ায়। সরাসরি হোম ডেলিভারি!</p>
+                <a href="#products" class="btn-primary">সব পণ্য দেখুন <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- হিরো ব্যানার -->
-    <section class="hero-banner">
-        <h2>১০০% খাঁটি আয়ুর্বেদিক ও ভেষজ পণ্য</h2>
-        <p>রাসায়নিকমুক্ত অর্গানিক পণ্যের সমাহার সরাসরি আপনার ঠিকানায়।</p>
+    <!-- টপ ক্যাটাগরি সেকশন -->
+    <section class="categories-section">
+        <h2 class="section-title">Top Categories</h2>
+        <div class="category-grid">
+            <div class="cat-card">
+                <img src="https://via.placeholder.com/100" alt="Honey">
+                <p>খাঁটি মধু</p>
+            </div>
+            <div class="cat-card">
+                <img src="https://via.placeholder.com/100" alt="Oil">
+                <p>ভেষজ তেল</p>
+            </div>
+            <div class="cat-card">
+                <img src="https://via.placeholder.com/100" alt="Haluwa">
+                <p>স্পেশাল হালুয়া</p>
+            </div>
+            <div class="cat-card">
+                <img src="https://via.placeholder.com/100" alt="Organic">
+                <p>অর্গানিক ফুড</p>
+            </div>
+        </div>
     </section>
 
-    <!-- পণ্য তালিকা সেকশন -->
+    <!-- টপ প্রোডাক্টস সেকশন -->
     <section id="products" class="product-section">
-        <h2>আমাদের পণ্যসমূহ</h2>
-        <div class="product-grid" id="productGrid">
-            <!-- ডাইনামিক প্রোডাক্ট এখানে লোড হবে -->
+        <h2 class="section-title">Top Products</h2>
+        <div class="product-grid">
+            <!-- প্রোডাক্ট ১ -->
             <div class="product-card">
+                <span class="sale-badge">Sale!</span>
                 <img src="https://via.placeholder.com/200" alt="Product">
-                <h3>খাঁটি মধু (Natural Honey)</h3>
+                <h3>খাঁটি সুন্দরবনের মধু (Natural Honey)</h3>
                 <p class="price">৳ ১,২০০</p>
-                <button onclick="addToCart('খাঁটি মধু', 1200)">অর্ডার করুন</button>
+                <div class="weight-options">
+                    <button class="wt-btn active">1kg</button>
+                    <button class="wt-btn">500gm</button>
+                    <button class="wt-btn">250gm</button>
+                </div>
+                <button class="order-btn" onclick="addToCart('খাঁটি সুন্দরবনের মধু', 1200)">অর্ডার করুন</button>
+            </div>
+            <!-- প্রোডাক্ট ২ -->
+            <div class="product-card">
+                <span class="sale-badge">Sale!</span>
+                <img src="https://via.placeholder.com/200" alt="Product">
+                <h3>স্পেশাল পাওয়ারফুল অর্গানিক হালুয়া</h3>
+                <p class="price">৳ ১,৫০০</p>
+                <div class="weight-options">
+                    <button class="wt-btn active">1kg</button>
+                    <button class="wt-btn">500gm</button>
+                </div>
+                <button class="order-btn" onclick="addToCart('স্পেশাল পাওয়ারফুল অর্গানিক হালুয়া', 1500)">অর্ডার করুন</button>
             </div>
         </div>
     </section>
 
-    <!-- ফুটার সেকশন -->
-    <footer class="main-footer">
-        <div class="footer-content">
-            <h3>Natural BD Extra</h3>
-            <p>নিরাপদ ও সহজ ই-কমার্স সেবা। সরাসরি হোয়াটসঅ্যাপে অর্ডার করুন এবং ঘরে বসে ডেলিভারি পান।</p>
-            <p>📞 ০১৯১০-৫৩২িস৩৪ (WhatsApp)</p>
-        </div>
-        <div class="footer-links">
-            <h4>দ্রুত লিংক</h4>
-            <ul>
-                <li><a href="index.html">হোম পেজ</a></li>
-                <li><a href="#products">পণ্যসমূহ</a></li>
-                <li><a href="admin.html">সেক্রেট অ্যাডমিন প্যানেল</a></li>
-                <li><a href="#about">আমাদের সম্পর্কে</a></li>
-            </ul>
-        </div>
-        <div class="footer-security">
-            <h4>সিকিউরিটি ও মনিটাইজেশন</h4>
-            <p>🔒 হাই-গ্রেড এনক্রিপশন প্রটেকশন</p>
-            <p>💰 গুগল অ্যাডসেন্স ও অ্যাডস্টার্ডা ইনকাম ইন্টিগ্রেশন</p>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; ২০২৬ Natural BD Extra. সর্বস্বত্ব সংরক্ষিত।</p>
-        </div>
-    </footer>
+    <!-- বটম নেভিগেশন বার (মোবাইল ফ্রেন্ডলি) -->
+    <div class="bottom-nav">
+        <a href="index.html" class="active"><i class="fa-solid fa-house"></i><span>হোম</span></a>
+        <a href="#products"><i class="fa-solid fa-box-open"></i><span>পণ্য</span></a>
+        <a href="admin.html"><i class="fa-solid fa-lock"></i><span>অ্যাডমিন</span></a>
+        <a href="tel:01910532834"><i class="fa-solid fa-phone-volume"></i><span>কল করুন</span></a>
+        <a href="#" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i><span>মেনু</span></a>
+    </div>
 
     <script src="script.js"></script>
 </body>
