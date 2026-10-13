@@ -3,208 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>গোপন অ্যাডমিন প্যানেল - Natural BD Extra</title>
+    <title>Admin Dashboard - Natural BD Extra</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .admin-container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .login-box {
-            max-width: 400px;
-            margin: 80px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .login-box input, .admin-form input, .admin-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .btn-primary {
-            background-color: #2d6a4f;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .btn-danger {
-            background-color: #e63946;
-            color: white;
-            border: none;
-            padding: 6px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .product-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        .product-table th, .product-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-            font-size: 14px;
-        }
-        .product-table th {
-            background-color: #2d6a4f;
-            color: white;
-        }
-    </style>
 </head>
-<body>
+<body class="admin-body">
 
-    <!-- Login Section -->
-    <div id="loginSection" class="login-box">
-        <h2><i class="fa-solid fa-lock"></i> সিক্রেট অ্যাডমিন লগইন</h2>
-        <p style="font-size:12px; color:#666; margin-bottom:15px;">এনক্রিপশন সিকিউরিটি প্রটেক্টেড প্যানেল</p>
-        <input type="text" id="adminUser" placeholder="ইউজারনেম (যেমন: admin)">
-        <input type="password" id="adminPass" placeholder="পাসওয়ার্ড (যেমন: natural123)">
-        <button class="btn-primary" onclick="handleLogin()">প্রবেশ করুন</button>
-        <p id="loginError" style="color:red; font-size:13px; margin-top:10px;"></p>
-        <p style="margin-top:20px;"><a href="index.html" style="color:#2d6a4f; text-decoration:none;"><i class="fa-solid fa-arrow-left"></i> হোম পেজে ফিরে যান</a></p>
+    <!-- অ্যাডমিন হেডার -->
+    <header class="main-header">
+        <div class="logo-area">
+            <h1>Natural BD Extra</h1>
+            <p>🔒 সিক্রেট অ্যাডমিন ড্যাশবোর্ড</p>
+        </div>
+        <div class="action-buttons">
+            <a href="index.html" class="cart-btn">⬅️ ওয়েবসাইটে ফিরে যান</a>
+        </div>
+    </header>
+
+    <!-- পাসওয়ার্ড প্রটেক্টেড সেকশন -->
+    <div class="admin-container" id="loginBox">
+        <div class="login-card">
+            <h2>অ্যাডমিন লগইন</h2>
+            <p>দয়া করে সিক্রেট পাসওয়ার্ড দিন:</p>
+            <input type="password" id="adminPass" placeholder="পাসওয়ার্ড দিন...">
+            <button onclick="checkPassword()">লগইন করুন</button>
+        </div>
     </div>
 
-    <!-- Dashboard Section -->
-    <div id="dashboardSection" class="admin-container" style="display:none;">
-        <div class="flex-between">
-            <h2><i class="fa-solid fa-gauge"></i> অ্যাডমিন কন্ট্রোল প্যানেল (CRUD)</h2>
-            <button class="btn-danger" onclick="handleLogout()">লগআউট</button>
-        </div>
-        <hr style="margin: 20px 0;">
-
-        <h3>নতুন পণ্য যোগ করুন</h3>
-        <div class="admin-form">
-            <input type="text" id="pName" placeholder="পণ্যের নাম">
-            <input type="text" id="pPrice" placeholder="দাম (যেমন: ৫৫০ টাকা)">
-            <textarea id="pDesc" placeholder="পণ্যের বিবরণ"></textarea>
-            <input type="text" id="pImg" placeholder="ছবির লিংক (URL)">
-            <button class="btn-primary" onclick="addProduct()">পণ্য সেভ করুন</button>
-        </div>
-
-        <h3 style="margin-top: 30px;">বিদ্যমান পণ্য তালিকা ও ম্যানেজমেন্ট (এডিট / ডিলিট)</h3>
-        <table class="product-table">
-            <thead>
-                <tr>
-                    <th>নাম</th>
-                    <th>দাম</th>
-                    <th>বিবরণ</th>
-                    <th>কার্যক্রম</th>
-                </tr>
-            </thead>
-            <tbody id="adminProductTable">
-                <!-- Loaded via JS -->
-            </tbody>
-        </table>
+    <!-- ড্যাশবোর্ড কন্টেন্ট (লগইন সফল হলে দেখাবে) -->
+    <div class="admin-dashboard" id="dashboardBox" style="display: none;">
+        <h2>পণ্য ও ক্যাটালগ ম্যানেজমেন্ট</h2>
         
-        <p style="margin-top: 30px;"><a href="index.html" class="btn-primary" style="text-decoration:none; display:inline-block;">ওয়েবসাইট দেখুন</a></p>
+        <div class="admin-form-group">
+            <h3>নতুন পণ্য যোগ করুন</h3>
+            <input type="text" id="newProdName" placeholder="পণ্যের নাম (যেমন: অর্গানিক ঘি)">
+            <input type="number" id="newProdPrice" placeholder="মূল্য (টাকা)">
+            <input type="text" id="newProdImg" placeholder="ছবির লিংক (Image URL)">
+            <button onclick="addNewProduct()">পণ্য লিস্টে যুক্ত করুন</button>
+        </div>
+
+        <div class="admin-form-group">
+            <h3>পণ্য ডিলিট বা এডিট করুন</h3>
+            <input type="text" id="delProdName" placeholder="ডিলিট করতে চান এমন পণ্যের নাম">
+            <button onclick="deleteProduct()" class="delete-btn">পণ্য মুছে ফেলুন</button>
+        </div>
     </div>
 
-    <script>
-        if(localStorage.getItem('nbd_logged') === 'true') {
-            document.getElementById('loginSection').style.display = 'none';
-            document.getElementById('dashboardSection').style.display = 'block';
-            loadAdminProducts();
-        }
-
-        function handleLogin() {
-            const u = document.getElementById('adminUser').value;
-            const p = document.getElementById('adminPass').value;
-            if(u === 'admin' && p === 'natural123') {
-                localStorage.setItem('nbd_logged', 'true');
-                document.getElementById('loginSection').style.display = 'none';
-                document.getElementById('dashboardSection').style.display = 'block';
-                loadAdminProducts();
-            } else {
-                document.getElementById('loginError').innerText = ' ভুল ইউজারনেম অথবা পাসওয়ার্ড!';
-            }
-        }
-
-        function handleLogout() {
-            localStorage.removeItem('nbd_logged');
-            location.reload();
-        }
-
-        const defaultProducts = [
-            { id: 1, name: "খাঁটি মধু (Natural Honey)", price: "৫৫০ টাকা", desc: "বনের খাঁটি ও পুষ্টিসমৃদ্ধ মধু, ১ কেজি।", img: "https://images.unsplash.com/photo-1587049352847-4a222e784d38?auto=format&fit=crop&w=500&q=80" },
-            { id: 2, name: "আয়ুর্বেদিক হেয়ার অয়েল", price: "৩৫০ টাকা", desc: "চুলের পুষ্টি ও চুল পড়া রোধে পরীক্ষিত ভেষজ তেল।", img: "https://images.unsplash.com/photo-1608248597359-f55c7075d5f2?auto=format&fit=crop&w=500&q=80" },
-            { id: 3, name: "হোমিওপ্যাথিক সুগার কেয়ার কিট", price: "৭৫০ টাকা", desc: "প্রাকৃতিক উপাদানে তৈরি স্বাস্থ্য সুরক্ষামূলক কিট।", img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80" },
-            { id: 4, name: "মরিঙ্গা পাউডার (সজিনা পাতা)", price: "৪০০ টাকা", desc: "রোগ প্রতিরোধ ক্ষমতা বাড়াতে ১০০% অর্গানিক মরিঙ্গা পাউডার।", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=500&q=80" }
-        ];
-
-        function getProducts() {
-            const saved = localStorage.getItem('nbd_products');
-            return saved ? JSON.parse(saved) : defaultProducts;
-        }
-
-        function saveProducts(products) {
-            localStorage.setItem('nbd_products', JSON.stringify(products));
-        }
-
-        function loadAdminProducts() {
-            const products = getProducts();
-            const tbody = document.getElementById('adminProductTable');
-            tbody.innerHTML = '';
-
-            products.forEach((p, index) => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${p.name}</td>
-                    <td>${p.price}</td>
-                    <td>${p.desc}</td>
-                    <td>
-                        <button class="btn-danger" onclick="deleteProduct(${index})"><i class="fa-solid fa-trash"></i> ডিলিট</button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function addProduct() {
-            const name = document.getElementById('pName').value;
-            const price = document.getElementById('pPrice').value;
-            const desc = document.getElementById('pDesc').value;
-            const img = document.getElementById('pImg').value || 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=500&q=80';
-
-            if(!name || !price) {
-                alert('দয়া করে পণ্যের নাম এবং দাম লিখুন!');
-                return;
-            }
-
-            const products = getProducts();
-            products.push({ id: Date.now(), name, price, desc, img });
-            saveProducts(products);
-
-            document.getElementById('pName').value = '';
-            document.getElementById('pPrice').value = '';
-            document.getElementById('pDesc').value = '';
-            document.getElementById('pImg').value = '';
-
-            loadAdminProducts();
-            alert('পণ্য সফলভাবে যুক্ত হয়েছে!');
-        }
-
-        function deleteProduct(index) {
-            if(confirm('আপনি কি নিশ্চিত এই পণ্যটি ডিলিট করতে চান?')) {
-                const products = getProducts();
-                products.splice(index, 1);
-                saveProducts(products);
-                loadAdminProducts();
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
