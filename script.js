@@ -1,44 +1,102 @@
+let clickCount = 0;
 let cartCount = 0;
 
-function toggleSidebar() {
-    let sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('active');
+// সিক্রেট এডমিন প্যানেলের জন্য ফুটারের লেখার ওপর ২৫ বার ক্লিক কাউন্ট
+function triggerAdminModal() {
+    clickCount++;
+    if (clickCount >= 25) {
+        clickCount = 0;
+        document.getElementById('secretAdminModal').style.display = 'flex';
+    }
 }
 
-function addToCart(productName, price) {
+function closeAdminModal() {
+    document.getElementById('secretAdminModal').style.display = 'none';
+}
+
+// কম্বো প্যাকেজ হোয়াটসঅ্যাপ অর্ডার (সঠিক অফার মূল্য ৳ ৩,৫০০ সহ)
+function orderComboWhatsApp() {
+    let message = "আসসালামু আলাইকুম, আমি স্পেশাল কম্বো প্যাকেজটি (অফার মূল্য: ৳ ৩,৫০০) অর্ডার করতে চাই।\nদয়া করে আমার অর্ডারটি কনফার্ম করুন।";
+    let whatsappUrl = "https://wa.me/8801910532834?text=" + encodeURIComponent(message);
+    window.open(whatsappUrl, '_blank');
+}
+
+// কার্ট ডিটেলস ওপেন
+function openCartDetails() {
+    document.getElementById('orderModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('orderModal').style.display = 'none';
+}
+
+// কার্ট থেকে হোয়াটসঅ্যাপে অর্ডার পাঠানো
+function sendOrderToWhatsApp() {
+    let details = document.getElementById('customerDetails').value;
+    if(details.trim() === "") {
+        alert("দয়া করে আপনার নাম, ঠিকানা ও মোবাইল নম্বর লিখুন।");
+        return;
+    }
+    let message = "নতুন অর্ডার বিবরণ:\n" + details;
+    let whatsappUrl = "https://wa.me/8801910532834?text=" + encodeURIComponent(message);
+    window.open(whatsappUrl, '_blank');
+    closeModal();
+}
+
+// গ্যালারি থেকে ছবি আপলোড করে সাইটে যুক্ত করা (নির্দিষ্ট সাইজ ছাড়াই)
+function saveNewProduct() {
+    let name = document.getElementById('adminProdName').value;
+    let price = document.getElementById('adminProdPrice').value;
+    let imageInput = document.getElementById('adminProdImage');
+
+    if(name && price && imageInput.files && imageInput.files[0]) {
+        let reader = new FileReader();
+        reader.onload = function(e) {
+            let imageUrl = e.target.result;
+            
+            let grid = document.getElementById('dynamicProductGrid');
+            let card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <img src="${imageUrl}" alt="Product">
+                <h3>${name}</h3>
+                <p class="price">৳ ${price}</p>
+                <button onclick="addToCartAndOrder('${name}', '${price}')">অর্ডার করুন</button>
+            `;
+            grid.appendChild(card);
+            
+            alert('সফলভাবে পণ্যটি প্রকাশিত হয়েছে!');
+            closeAdminModal();
+            
+            document.getElementById('adminProdName').value = '';
+            document.getElementById('adminProdPrice').value = '';
+            document.getElementById('adminProdImage').value = '';
+        }
+        reader.readAsDataURL(imageInput.files[0]);
+    } else {
+        alert("দয়া করে সব তথ্য এবং ছবি দিন।");
+    }
+}
+
+function addToCartAndOrder(productName, price) {
     cartCount++;
     document.getElementById('cartCount').innerText = cartCount;
-    alert(productName + ' কার্টে যোগ করা হয়েছে! (মূল্য: ৳ ' + price + ')');
+    let message = "হ্যালো, আমি এই পণ্যটি কিনতে চাই:\nপণ্যের নাম: " + productName + "\nমূল্য: ৳ " + price;
+    let whatsappUrl = "https://wa.me/8801910532834?text=" + encodeURIComponent(message);
+    window.open(whatsappUrl, '_blank');
 }
 
-function openCart() {
-    alert('আপনার কার্টে ' + cartCount + 'টি পণ্য রয়েছে।');
-}
+function uploadProductDirect() {
+    let name = document.getElementById('pName').value;
+    let price = document.getElementById('pPrice').value;
+    let imageInput = document.getElementById('pImage');
 
-function checkPassword() {
-    let pass = document.getElementById('adminPass').value;
-    if(pass === "admin123") {
-        document.getElementById('loginBox').style.display = 'none';
-        document.getElementById('dashboardBox').style.display = 'block';
-        alert('সফলভাবে লগইন হয়েছে!');
+    if(name && price && imageInput.files && imageInput.files[0]) {
+        alert("পণ্য সফলভাবে সেভ হয়েছে!");
+        document.getElementById('pName').value = '';
+        document.getElementById('pPrice').value = '';
+        document.getElementById('pImage').value = '';
     } else {
-        alert('ভুল পাসওয়ার্ড!');
-    }
-}
-
-function addNewProduct() {
-    let name = document.getElementById('newProdName').value;
-    let price = document.getElementById('newProdPrice').value;
-    if(name && price) {
-        alert('"' + name + '" পণ্যটি সফলভাবে যুক্ত হয়েছে!');
-    } else {
-        alert('সব তথ্য পূরণ করুন।');
-    }
-}
-
-function deleteProduct() {
-    let name = document.getElementById('delProdName').value;
-    if(name) {
-        alert('"' + name + '" পণ্যটি মুছে ফেলা হয়েছে।');
+        alert("সকল তথ্য ও ছবি পূরণ করুন।");
     }
 }
