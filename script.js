@@ -19,22 +19,37 @@ function searchProduct() {
     }
 }
 
-// গোপন অ্যাডমিন প্যানেল সিকিউরিটি ফাংশন
-function openAdminPanel() {
-    let password = prompt("গোপন অ্যাডমিন প্যানেলে প্রবেশ করতে পাসওয়ার্ড দিন:");
-    if (password === "admin123") {
-        let action = prompt("অ্যাডমিন প্যানেল:\n1. নতুন পণ্য যোগ করুন\n2. পণ্য ডিলিট করুন\n\nনম্বরটি লিখুন (1 বা 2):");
-        if(action === "1") {
-            let pName = prompt("নতুন পণ্যের নাম লিখুন:");
-            let pPrice = prompt("পণ্যের দাম লিখুন (টাকা):");
-            if(pName && pPrice) {
-                alert('সফলভাবে "' + pName + '" পণ্যটি যুক্ত করা হয়েছে!');
-            }
-        } else if(action === "2") {
-            prompt("ডিলিট করতে চান এমন পণ্যের নাম বা আইডি লিখুন:");
-            alert('পণ্যটি সফলভাবে মুছে ফেলা হয়েছে।');
-        }
-    } else if(password !== null) {
-        alert("ভুল পাসওয়ার্ড! আপনার অ্যাক্সেস অস্বীকৃত হয়েছে।");
+/* আলাদা অ্যাডমিন প্যানেল লগইন ও প্রোডাক্ট কন্ট্রোল */
+function checkPassword() {
+    let pass = document.getElementById('adminPass').value;
+    if(pass === "admin123") {
+        document.getElementById('loginBox').style.display = 'none';
+        document.getElementById('dashboardBox').style.display = 'block';
+        alert('স্বাগতম! অ্যাডমিন প্যানেলে সফলভাবে প্রবেশ করেছেন।');
+    } else {
+        alert('ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন।');
+    }
+}
+
+function addNewProduct() {
+    let name = document.getElementById('newProdName').value;
+    let price = document.getElementById('newProdPrice').value;
+    if(name && price) {
+        alert('সফলভাবে "' + name + '" পণ্যটি সিস্টেমে যুক্ত করা হয়েছে!');
+        document.getElementById('newProdName').value = '';
+        document.getElementById('newProdPrice').value = '';
+        document.getElementById('newProdImg').value = '';
+    } else {
+        alert('দয়া করে পণ্যের নাম ও দাম লিখুন।');
+    }
+}
+
+function deleteProduct() {
+    let name = document.getElementById('delProdName').value;
+    if(name) {
+        alert('"' + name + '" পণ্যটি সফলভাবে মুছে ফেলা হয়েছে।');
+        document.getElementById('delProdName').value = '';
+    } else {
+        alert('যে পণ্যটি মুছতে চান তার নাম লিখুন।');
     }
 }
