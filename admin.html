@@ -5,46 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Natural BD Extra</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="admin-body">
 
-    <!-- অ্যাডমিন হেডার -->
-    <header class="main-header">
-        <div class="logo-area">
-            <h1>Natural BD Extra</h1>
-            <p>🔒 সিক্রেট অ্যাডমিন ড্যাশবোর্ড</p>
+    <header class="site-header">
+        <div class="logo">
+            <h2>Natural BD Extra - Admin</h2>
         </div>
-        <div class="action-buttons">
-            <a href="index.html" class="cart-btn">⬅️ ওয়েবসাইটে ফিরে যান</a>
+        <div class="header-right">
+            <a href="index.html" class="btn-primary" style="padding: 6px 12px; font-size: 13px;">ওয়েবসাইটে যান</a>
         </div>
     </header>
 
-    <!-- পাসওয়ার্ড প্রটেক্টেড সেকশন -->
     <div class="admin-container" id="loginBox">
         <div class="login-card">
-            <h2>অ্যাডমিন লগইন</h2>
-            <p>দয়া করে সিক্রেট পাসওয়ার্ড দিন:</p>
-            <input type="password" id="adminPass" placeholder="পাসওয়ার্ড দিন...">
+            <h2><i class="fa-solid fa-lock"></i> অ্যাডমিন লগইন</h2>
+            <p>সিক্রেট পাসওয়ার্ড দিন:</p>
+            <input type="password" id="adminPass" placeholder="পাসওয়ার্ড (admin123)">
             <button onclick="checkPassword()">লগইন করুন</button>
         </div>
     </div>
 
-    <!-- ড্যাশবোর্ড কন্টেন্ট (লগইন সফল হলে দেখাবে) -->
     <div class="admin-dashboard" id="dashboardBox" style="display: none;">
-        <h2>পণ্য ও ক্যাটালগ ম্যানেজমেন্ট</h2>
+        <h2><i class="fa-solid fa-gauge"></i> ড্যাশবোর্ড ও প্রোডাক্ট ম্যানেজমেন্ট</h2>
         
         <div class="admin-form-group">
             <h3>নতুন পণ্য যোগ করুন</h3>
-            <input type="text" id="newProdName" placeholder="পণ্যের নাম (যেমন: অর্গানিক ঘি)">
+            <input type="text" id="newProdName" placeholder="পণ্যের নাম">
             <input type="number" id="newProdPrice" placeholder="মূল্য (টাকা)">
-            <input type="text" id="newProdImg" placeholder="ছবির লিংক (Image URL)">
-            <button onclick="addNewProduct()">পণ্য লিস্টে যুক্ত করুন</button>
+            <button onclick="addNewProduct()">পণ্য যুক্ত করুন</button>
         </div>
 
         <div class="admin-form-group">
-            <h3>পণ্য ডিলিট বা এডিট করুন</h3>
-            <input type="text" id="delProdName" placeholder="ডিলিট করতে চান এমন পণ্যের নাম">
-            <button onclick="deleteProduct()" class="delete-btn">পণ্য মুছে ফেলুন</button>
+            <h3>পণ্য ডিলিট করুন</h3>
+            <input type="text" id="delProdName" placeholder="মুছে ফেলতে চান এমন পণ্যের নাম">
+            <button onclick="deleteProduct()" class="delete-btn">পণ্য ডিলিট করুন</button>
         </div>
     </div>
 
